@@ -54,9 +54,14 @@ $(document).ready(function(){
 
 
 	$(window).load(function(){
+			var responseValue = ($(this).data("responseValue"));
+
 			$('.one').html(questions[newQuest].question);
+
 			for(var i = 0; i < questions.length; i++){
-				$('.two').append($('<div class="results" />').html(questions[i].response));
+				var responz = $("<div/>").addClass("repos").attr("data-responseValue", questions[i].response).text(questions[i].response);
+
+				$('.two').append(responz);
 
 
 
