@@ -56,7 +56,11 @@ $(document).ready(function(){
 	$(window).load(function(){
 			$('.one').html(questions[newQuest].question);
 			for(var i = 0; i < questions.length; i++){
-				$('.two').append('<p>' + (i+1) + questions[i].response + '</p>');
+				$('.two').append($('<div class="results" />').html(questions[i].response));
+
+
+
+				// $('.two').html(questions[i].response);
 				//need to separate the reponse answers into different lines and with separate data attributes.
 			}
 		
