@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 
 
-	$(window).load(function(){
+	$(window).load(function setGame(){
 			var responseValue = ($(this).data("responseValue"));
 
 			$('.one').html(questions[newQuest].question);
@@ -68,13 +68,29 @@ $(document).ready(function(){
 				// $('.two').html(questions[i].response);
 				//need to separate the reponse answers into different lines and with separate data attributes.
 			}
-		
+		$(document).on('click', 'datavalu1, datavalu2, datavalu3', function(){ // data values made up for now
+			var divClass = $(this).data('divclass');//or something
+			
+			setTimeout(function(){
+				newQuest++;
+				setGame();
+
+			}, 2000);
+
+			if (this oject is equal to the answer object(questions[newQuest].actAns)){
+				$('.three').html('Nice!!' + '<p>' + questions[newQuest].actAns + '</p>')
+			}
+			else {
+				$('.three').html('EH! WRONG!!' + '<p>' + questions[newQuest].actAns + '</p>')
+			}
+
+		})
 
 
 		// questions[newQuest]
 
 // on click of choices  (like onclick of choice1&2 from rpg)
-// 	numQuest++;
+// 	newQuest++;
 // 	set time out
 // 		questions[newQuest]
 
