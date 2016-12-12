@@ -38,22 +38,8 @@ $(document).ready(function(){
 
 
 
-// var questions = [
-// 	{
-// 		question : "1+1",
-// 		choices: [1, 2, 3, 4],
-// 		correctChoice: 1
-// 	},
-// 	{
-// 		question: "2+3",
-// 		choics: [6,7,8,5],
-// 		correctChoice: 3
-// 	}
-// ]
 
-
-
-	$(window).load(function setGame(){
+	function setGame(){
 			var responseValue = ($(this).data("responseValue"));
 
 			$('.one').html(questions[newQuest].question);
@@ -64,25 +50,25 @@ $(document).ready(function(){
 				$('.two').append(responz);
 
 
-
+				}
 				// $('.two').html(questions[i].response);
 				//need to separate the reponse answers into different lines and with separate data attributes.
-			}
-		$(document).on('click', 'datavalu1, datavalu2, datavalu3', function(){ // data values made up for now
-			var divClass = $(this).data('divclass');//or something
 			
-			setTimeout(function(){
-				newQuest++;
-				setGame();
+		// $(document).on('click', 'datavalu1, datavalu2, datavalu3', function(){ // data values made up for now
+		// 	var divClass = $(this).data('divclass');//or something
+			
+		// 	setTimeout(function(){
+		// 		newQuest++;
+		// 		setGame();
 
-			}, 2000);
+		// 	}, 2000);
 
-			if (this oject is equal to the answer object(questions[newQuest].actAns)){
-				$('.three').html('Nice!!' + '<p>' + questions[newQuest].actAns + '</p>')
-			}
-			else {
-				$('.three').html('EH! WRONG!!' + '<p>' + questions[newQuest].actAns + '</p>')
-			}
+		// 	if (this oject is equal to the answer object(questions[newQuest].actAns)){
+		// 		$('.three').html('Nice!!' + '<p>' + questions[newQuest].actAns + '</p>')
+		// 	}
+		// 	else {
+		// 		$('.three').html('EH! WRONG!!' + '<p>' + questions[newQuest].actAns + '</p>')
+		// 	}
 
 		})
 
@@ -135,6 +121,21 @@ $(document).ready(function(){
 
 
 });
+
+
+
+// var questions = [
+// 	{
+// 		question : "1+1",
+// 		choices: [1, 2, 3, 4],
+// 		correctChoice: 1
+// 	},
+// 	{
+// 		question: "2+3",
+// 		choics: [6,7,8,5],
+// 		correctChoice: 3
+// 	}
+// ]
 
 // function setGame(){
 // 	$('.one').text = newQuest++;
