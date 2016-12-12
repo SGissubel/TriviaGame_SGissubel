@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('body').css('background-image', 'url('+"images/background.JPG"+')');
+	// $('body').css('background-image', 'src('+"images/background.JPG"+')');
 
 //Will increment this to do the next question. 	
 var newQuest = 0;
@@ -7,6 +7,10 @@ var newQuest = 0;
 var timer = 25;
 
 var number = timer;
+
+var correct = 0;
+
+var incorrect = 0;
 
 
 
@@ -68,6 +72,15 @@ var questions = [{
 		ansInfo: "Cubic inches is often a measurement used in North America to indicate the displacement of an engine block, whereas most other countries use cubic centimeters. Cubic centimeters and cubic inches are both measurements used to define the displacement (or overall size) of the block of an engine. If the engine block was submerged in a pool of water, it would displace 88 cubic inches, or 1442.1 cubic centimeters of water. Cubic inches were originally used to measure most Chevy big block engines and also became the standard of measurement for Harley Davidson engines."
 	},	
 ];
+var start = new Audio("sounds/start.wav")
+
+function playMusic(start){
+	start.addEventListener('ended', function(){
+		this.play();
+	}, false);
+	start.play();
+}
+playMusic(start);
 
 $('button').one('click', function (){
 	generateQuestion();
@@ -81,6 +94,9 @@ function generateQuestion(){
 	})
 	if(newQuest < questions.length){
 		//Accesses the one div, and replaces all the html inside with a question, based on where we are in the array. 
+		// $('body').css('background-image', questions[newQuest].image[i]);
+
+		// $('body').css('background-image', 'src('+"questions[newQuest].image[i]"+')');
 		$(".one").html("<div class=question>"+questions[newQuest].question+"</div>");
 		$(".two").empty();
 		$(".four").html(number = 25);
@@ -90,12 +106,11 @@ function generateQuestion(){
 			$(".two").append("<div class=\"answer\" data-responses=\""+questions[newQuest].response[i]+"\">"+questions[newQuest].response[i]+"</div>");
 
 		}
-			$('body').css('background-image', (questions[newQuest].image[i]));
 
 	}
 	else{
 		$('.one').html("Game over." + "<br/>" + "Thanks for Playing!");
-		$('.two').hide();
+		$('.two').html("You got " + correct + "questions correct! And you got " + incorrect + "questions incorrect.  Great Job! Come back and test your Harley knowledge again soon!");
 		$('.three').hide();
 		$('.four').hide();
 	}
@@ -138,6 +153,7 @@ $(".two").on("click",".answer", function(){
 		$('.two').html("Correct!" + '<p>' + questions[newQuest].ansInfo + '</p>');
 		stop();
 		$(".four").empty();
+		correct++;
 		setTimeout(function() {
 		newQuest++;
 		generateQuestion();
@@ -149,6 +165,8 @@ $(".two").on("click",".answer", function(){
 		$('.two').html("Incorrect! The answer is: " + questions[newQuest].actAns + '<p>' + questions[newQuest].ansInfo + '</p>');
 		stop();
 		$(".four").empty();
+		console.log(incorrect);
+
 		setTimeout(function() {
 			newQuest++;
 			generateQuestion();
