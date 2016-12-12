@@ -103,14 +103,14 @@ function generateQuestion(){
 		displayNumber();
 		$(".four").html(runTimer);
 		for(var i = 0; i<questions[newQuest].response.length; i++){
-			$(".two").append("<div class=\"answer\" data-responses=\""+questions[newQuest].response[i]+"\">"+questions[newQuest].response[i]+"</div>");
+			$(".two").append("<div class=\"answer hvr-fade\" data-responses=\""+questions[newQuest].response[i]+"\">"+questions[newQuest].response[i]+"</div>");
 
 		}
 
 	}
 	else{
 		$('.one').html("Game over." + "<br/>" + "Thanks for Playing!");
-		$('.two').html("You got " + correct + "questions correct! And you got " + incorrect + "questions incorrect.  Great Job! Come back and test your Harley knowledge again soon!");
+		$('.two').html("You got " + correct + " questions correct! And you got " + incorrect + " questions incorrect.  Great Job! Come back and test your Harley knowledge again soon!");
 		$('.three').hide();
 		$('.four').hide();
 	}
@@ -130,6 +130,7 @@ function decrement(){
 		 if (number === 0){
 		$('.two').html("TIMES UP! The Answer is " + questions[newQuest].actAns + '<p>' + questions[newQuest].ansInfo + '</p>');
 		stop();
+		incorrect++;
 		$(".four").empty();
 		setTimeout(function() {
 		newQuest++;
@@ -165,8 +166,7 @@ $(".two").on("click",".answer", function(){
 		$('.two').html("Incorrect! The answer is: " + questions[newQuest].actAns + '<p>' + questions[newQuest].ansInfo + '</p>');
 		stop();
 		$(".four").empty();
-		console.log(incorrect);
-
+		incorrect++;
 		setTimeout(function() {
 			newQuest++;
 			generateQuestion();
