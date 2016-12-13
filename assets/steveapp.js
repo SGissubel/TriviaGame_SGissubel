@@ -111,9 +111,13 @@ function generateQuestion(){
 	else{
 		$('.one').html("Game over." + "<br/>" + "Thanks for Playing!");
 		$('.two').html("You got " + correct + " questions correct! And you got " + incorrect + " questions incorrect.  Great Job! Come back and test your Harley knowledge again soon!");
-		$('.three').hide();
+		$('.three').html('<button class="playAgain">' + 'Would You Like to Play Again?' + '</button>');
 		$('.four').hide();
 	}
+	$('.playAgain').on('click', function(){
+		newQuest = 0;
+		generateQuestion();
+	})
 
 }
 function displayNumber(){
